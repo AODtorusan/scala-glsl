@@ -1,0 +1,11 @@
+#/bin/bash
+
+if [[ -d glslang/.svn ]]; then
+	cd glslang
+	svn up
+else
+	svn co https://cvs.khronos.org/svn/repos/ogl/trunk/ecosystem/public/sdk/tools/glslang/Install glslang
+	cd glslang
+fi
+
+svn info |grep Revision: |cut -c11- > revision.txt
